@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background:  #141a34;
+    }
+
+    .paragraph-styling {
+        font-size: 1rem;
+        margin: 5px 0;
+        cursor: pointer;
+        text-transform: uppercase;
+        background: #1c2b6d;
+        color: white;
+        height: 20px;
+        width: 200px;
+        border-radius: 10px;
+        border: 2px solid white;
+        
+    }
+
+    .container {
+        height: 200px;
+        width: 250px;
+        border-radius: 10px;
+        background: black;
+        color: white;
+        overflow: hidden;
+
+    }
+
+    #input {
+        padding: 5px;
+        width: 200px;
+        border-radius: 10px;
+        border: 2px solid #3f5bd7;
+        font-weight: bolder;
+        outline: none;
+        text-transform: capitalize;
+    }
+
+    button {
+        height: 30px;
+        width: 30px;
+        font-size: 1rem;
+        border-radius: 5px;
+        background-color: #1c2b6d;
+        border: 2px solid white;
+        color: white;
+    }
+    .none{
+        display: none;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <center>
+            <h1 style="margin:15px 0 ;">To-do List:)</h1>
+            <input type="text" id="input" placeholder="Create Your List">
+            <button id="btn">+</button>
+            <div class="to-dos" id="todos">
+
+            </div>
+        </center>
+        <script>
+            const inputE1 = document.getElementById('input');
+            const btnE1 = document.getElementById('btn');
+            const todoContainer = document.getElementById('todos');
+
+            btnE1.addEventListener("click", () => {
+                console.log("the button will clicked")
+                var paragraph = document.createElement('p');
+                paragraph.classList.add('paragraph-styling');
+                todoContainer.appendChild(paragraph);
+                paragraph.innerHTML = inputE1.value;
+                inputE1.value = "";
+
+                if(paragraph.innerHTML==0){
+                    paragraph.classList.add('none')
+                }
+
+
+                paragraph.addEventListener("click", () => {
+                    paragraph.style.textDecoration = "line-through"
+                })
+
+                paragraph.addEventListener("dblclick", () => {
+                    paragraph.innerHTML = "";
+                    paragraph.classList.add('none')
+                })
+            })    
+        </script>
+    </div>
+</body>
+
+</html>
